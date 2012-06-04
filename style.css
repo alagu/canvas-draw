@@ -24,3 +24,9 @@ body .box1 label {
   color: red; }
 body .box2 label {
   color: green; }
+body textarea {
+  width: 200px;
+  font-size: 10px;
+  display: block;
+  margin: 0 auto;
+  text-align: center; }

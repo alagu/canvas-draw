@@ -1,30 +1,24 @@
-drawAfter = ->
+draw = (state)->
   canvas = $('#board')[0]
   
   if canvas.getContext
     ctx = canvas.getContext('2d')
     ctx.clearRect(0, 0, 2000, 2000 )
-    drawRectangle($('#after_box1_t').val(), $('#after_box1_l').val(), $('#after_box1_b').val(), $('#after_box1_r').val(), ctx, 'red')
-    drawRectangle($('#after_box2_t').val(), $('#after_box2_l').val(), $('#after_box2_b').val(), $('#after_box2_r').val(), ctx, 'green') 
+    rectangles = $('#' + state + '-values').val().replace(/\(/g,'').replace(/\)/g,'').split('\n')
+    for rectangle, index in rectangles
+      coords = rectangle.split(',')
+      drawRectangle(Number(coords[0]), Number(coords[1]), Number(coords[2]), Number(coords[3]), ctx, color(index))
 
-drawBefore = ->
-  canvas = $('#board')[0]
 
-  if canvas.getContext
-    ctx = canvas.getContext('2d')
-    ctx.clearRect(0, 0, 2000, 2000 )
-    drawRectangle($('#before_box1_t').val(), $('#before_box1_l').val(), $('#before_box1_b').val(), $('#before_box1_r').val(), ctx, 'red')
-    drawRectangle($('#before_box2_t').val(), $('#before_box2_l').val(), $('#before_box2_b').val(), $('#before_box2_r').val(), ctx, 'green') 
-
+color = (index)->
+  color_list = ['red', 'green', 'blue', 'orange', 'black', 'purple', 'pink']
+  color_list[index]
 
 drawRectangle = (top, left, bottom, right, ctx, color)-> 
   ctx.strokeStyle = color
   ctx.strokeRect(left, top, (right-left), (bottom-top))
   
-keys = ['before_box1_t', 'before_box1_l', 'before_box1_b', 'before_box1_r',
-        'before_box2_t', 'before_box2_l', 'before_box2_b', 'before_box2_r',
-        'after_box1_t', 'after_box1_l', 'after_box1_b', 'after_box1_r',
-        'after_box2_t', 'after_box2_l', 'after_box2_b', 'after_box2_r']
+keys = ['before-values', 'after-values']
 
 saveToCookies = ->
   for key in keys
@@ -40,11 +34,11 @@ addEvents = ->
     if $('#current-state').data('active') == 'before'
       $('#current-state').data('active','after')
       $('#current-state').html('After')
-      drawAfter()
+      draw('after')
     else
       $('#current-state').data('active', 'before')
       $('#current-state').html('Before')
-      drawBefore()
+      draw('before')
     
     saveToCookies()
     return false
