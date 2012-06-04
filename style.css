@@ -1,0 +1,26 @@
+body #board {
+  border: 1px solid #000; }
+body .coord {
+  width: 30px;
+  margin: 0;
+  padding: 1px; }
+body #before, body #after {
+  padding: 20px; }
+body .controls {
+  margin-top: 5px;
+  text-align: center; }
+body #swap-wrapper {
+  text-align: center; }
+  body #swap-wrapper button {
+    margin-top: 30px; }
+body label {
+  display: inline; }
+body #current-state {
+  font-family: 'Port Lligat Sans', sans-serif;
+  color: blue;
+  font-size: 20px;
+  margin-top: 5px; }
+body .box1 label {
+  color: red; }
+body .box2 label {
+  color: green; }
