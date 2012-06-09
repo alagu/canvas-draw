@@ -7,7 +7,7 @@ draw = function(state) {
   if (canvas.getContext) {
     ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, 2000, 2000);
-    rectangles = $('#' + state + '-values').val().replace(/\(/g, '').replace(/\)/g, '').split('\n');
+    rectangles = $('#' + state + '-values').val().replace(/\(/g, '').replace(/\)/g, '').replace(/INFO logger:/g, '').split('\n');
     _results = [];
     for (index = _i = 0, _len = rectangles.length; _i < _len; index = ++_i) {
       rectangle = rectangles[index];
@@ -20,8 +20,8 @@ draw = function(state) {
 
 color = function(index) {
   var color_list;
-  color_list = ['red', 'green', 'blue', 'orange', 'black', 'purple', 'pink'];
-  return color_list[index];
+  color_list = ['red', 'green', 'blue', 'orange', 'black', 'purple', 'pink', 'yellow'];
+  return color_list[index % color_list.length];
 };
 
 drawRectangle = function(top, left, bottom, right, ctx, color) {

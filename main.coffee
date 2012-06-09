@@ -4,15 +4,15 @@ draw = (state)->
   if canvas.getContext
     ctx = canvas.getContext('2d')
     ctx.clearRect(0, 0, 2000, 2000 )
-    rectangles = $('#' + state + '-values').val().replace(/\(/g,'').replace(/\)/g,'').split('\n')
+    rectangles = $('#' + state + '-values').val().replace(/\(/g,'').replace(/\)/g,'').replace(/INFO logger:/g, '').split('\n')
     for rectangle, index in rectangles
       coords = rectangle.split(',')
       drawRectangle(Number(coords[0]), Number(coords[1]), Number(coords[2]), Number(coords[3]), ctx, color(index))
 
 
 color = (index)->
-  color_list = ['red', 'green', 'blue', 'orange', 'black', 'purple', 'pink']
-  color_list[index]
+  color_list = ['red', 'green', 'blue', 'orange', 'black', 'purple', 'pink', 'yellow']
+  color_list[index % color_list.length]
 
 drawRectangle = (top, left, bottom, right, ctx, color)-> 
   ctx.strokeStyle = color
