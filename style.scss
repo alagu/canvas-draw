@@ -1,0 +1,56 @@
+body {
+
+  #board {
+    border: 1px solid #000;
+  }
+  
+  .coord {
+    width: 30px;
+    margin: 0;
+    padding: 1px; 
+  }
+  
+  #before, #after {
+    padding:20px;
+  }
+  
+  .controls {
+    margin-top:5px;
+    text-align: center;
+  }
+  
+  #swap-wrapper {
+    text-align: center;
+    button {
+      margin-top: 30px;
+    }
+  }
+  
+  label {
+    display: inline;
+  }
+  
+  #current-state {
+    font-family: 'Port Lligat Sans', sans-serif;
+    color: blue;
+    font-size:20px;
+    margin-top:5px;
+  }
+  
+  .box1 label {
+    color: red;
+  }
+  
+  .box2 label {
+    color: green;
+  }
+  
+  textarea {
+    width: 200px;
+    font-size: 10px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+}

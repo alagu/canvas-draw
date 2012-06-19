@@ -1,1 +1,40 @@
-My GitHub Page
+<html>
+<head>
+  <link href="style.css" rel="stylesheet" />
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Port+Lligat+Sans" media="screen" rel="stylesheet" type="text/css" />  
+  
+  <title>Markupwand Utils </title>
+
+</head>
+<body>
+
+  <div class="controls row-fluid">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="before" class="span4">
+          Before
+          <textarea id="before-values"></textarea> 
+        </div>
+        <div id="swap-wrapper" class="span4">
+          <button id="swap">Swap and Update</button>
+          <div id="current-state" data-active='before'></div>
+
+        </div>
+        
+        <div id="after" class="span4">
+          After
+          <textarea id="after-values"></textarea> 
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <canvas id="board" width="2000" height="2000">
+  This text is displayed if your browser does not support HTML5 Canvas.
+  </canvas>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script src="jquery.cookie.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
