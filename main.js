@@ -2,16 +2,18 @@
 var addEvents, color, draw, drawRectangle, fillFromCookies, keys, saveToCookies;
 
 draw = function(state) {
-  var canvas, coords, ctx, index, rectangle, rectangles, _i, _len, _results;
+  var canvas, coords, ctx, index, rectangle, rectangle_data, rectangle_pattern, rectangles, _i, _len, _results;
   canvas = $('#board')[0];
   if (canvas.getContext) {
     ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, 2000, 2000);
-    rectangles = $('#' + state + '-values').val().replace(/\(/g, '').replace(/\)/g, '').replace(/INFO logger:/g, '').split('\n');
+    rectangle_data = $('#' + state + '-values').val();
+    rectangle_pattern = /(\([^\)]+\))/g;
+    rectangles = rectangle_data.match(rectangle_pattern);
     _results = [];
     for (index = _i = 0, _len = rectangles.length; _i < _len; index = ++_i) {
       rectangle = rectangles[index];
-      coords = rectangle.split(',');
+      coords = rectangle.replace("(", "").replace(")", "").split(',');
       _results.push(drawRectangle(Number(coords[0]), Number(coords[1]), Number(coords[2]), Number(coords[3]), ctx, color(index)));
     }
     return _results;

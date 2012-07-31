@@ -4,9 +4,11 @@ draw = (state)->
   if canvas.getContext
     ctx = canvas.getContext('2d')
     ctx.clearRect(0, 0, 2000, 2000 )
-    rectangles = $('#' + state + '-values').val().replace(/\(/g,'').replace(/\)/g,'').replace(/INFO logger:/g, '').split('\n')
+    rectangle_data = $('#' + state + '-values').val()
+    rectangle_pattern = /(\([^\)]+\))/g
+    rectangles = rectangle_data.match(rectangle_pattern)
     for rectangle, index in rectangles
-      coords = rectangle.split(',')
+      coords = rectangle.replace("(", "").replace(")", "").split(',')
       drawRectangle(Number(coords[0]), Number(coords[1]), Number(coords[2]), Number(coords[3]), ctx, color(index))
 
 
